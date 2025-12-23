@@ -17,19 +17,21 @@
 
 
   <style>
+
   body{
-  height: 100%;
-  margin: 0;
-  background: linear-gradient(to bottom, #CFD3FF, #5E6B86,#2E3442);
-}
-  body{
-    padding: 20px 40px 30px 40px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Cairo', sans-serif;
-  }
+      height: 100%;
+      margin: 0;
+    background: -webkit-linear-gradient(#CFD3FF, #5E6B86, #2E3442);
+    background: -moz-linear-gradient(#CFD3FF, #5E6B86, #2E3442);
+    background: -o-linear-gradient(#CFD3FF, #5E6B86, #2E3442);
+    background: linear-gradient(#CFD3FF, #5E6B86, #2E3442);
+      padding: 40px 20px 30px 20px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Cairo', sans-serif;
+    }
     input{
       width: 100%;
       accent-color: #99C5FF;
@@ -52,6 +54,7 @@
       font-size: 30px;
       transition: opacity 1s;
       color: white;
+      
     }
     .button{
       display: flex;
@@ -92,42 +95,61 @@
   }
   #a{
     color: white;
-    position: relative;
-    bottom: 230px;
-    right: 25px;
+    
     
   }
   #a:active{
     opacity: 0.3;
   }
+  select{
+    background: #99C5FF;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    outline: none;
+  }
+  select:active{
+    opacity: 0.3;
+}
+#png{
+  border-radius: 5px;
+  width: 250px;
+}
   </style>
 </head>
 <body>
+   
 <div>
   
-    
-  <a href="سوره_المؤمنون_الشيخ_ياسر_الدوسري.mp3" download id="a"> 
-   <i class="fa-solid fa-download"></i> </a>
-   
-  <img src="yasser.png" width="200px">
   
-<marquee behavior="scroll" direction="right" scrollamount="3"><h2>Surah Al-Mu'minun-Yasser Al-Dosari/سوره المؤمنون الشيخ ياسر الدوسري</h2></marquee>
-<audio src="سوره_المؤمنون_الشيخ_ياسر_الدوسري.mp3" id="i"></audio>
+  <img src="yasser.png" width="200px" id="png">
+  
+<marquee behavior="scroll" direction="right" scrollamount="3"><h2>سوره الفرقان الشيخ ياسر الدوسري/Sura Al-Furqan Yasser Al-dosry</h2></marquee>
+<audio src="Yasser.mp3" id="i"></audio>
   <input type="range" id="t" min="0" step="0.000001" value="0">
   <div class="time">
   <span id="current">0:00</span>
   <span id="duration">0:00</span>
 </div>
-  <select>
-    <option>0.5</option>
-    <option>0.5</option>
-    
+
+  <select id="speed">
+    <option value="0.5">0.5</option>
+    <option value="1" selected>1</option>
+    <option value="1.5">1.5</option>
+    <option value="2">2</option>
   </select>
+
+     
   <div class="h4">
     <h4>-5</h4>
     <h4>+5</h4>
   </div>
   
+      
+  <a href="Yasser.mp3" download id="a"> 
+   
+   <i class="fa-solid fa-download"></i> </a>
+    
   <div class="button">
     
     <button onclick="he()" class="hi"><i class="fa-solid fa-rotate-left"></i></button>
@@ -137,10 +159,11 @@
     <i class="fa-solid fa-rotate-right"></i>
   </button>
   </div>
-  
+   
 </div>
   
   <script>
+    let speed = document.getElementById('speed')
     let playBtn = document.getElementById("play")
     let i = document.getElementById("i")
     let t = document.getElementById("t")
@@ -185,6 +208,10 @@ function hi(){
 function he(){
   i.currentTime -= 5
 }
+speed.oninput = function(){
+  i.playbackRate = speed.value
+}
+
   </script>
 </body>
 </html>
